@@ -16,7 +16,7 @@ range_on_training = (X_train - min_on_training).max(axis=0)
 X_train_scaled = (X_train - min_on_training) / range_on_training
 X_test_scaled = (X_test - min_on_training) / range_on_training
 
-#Get data points for matplotlib plot on changing C and gamma
+#Get data points for matplotlib plot on changing C and gamma(can change between 'rbf' and 'poly' to measure differences)
 trainScoreC = []
 testScoreC = []
 for num in [0.1,1,10,100]:
