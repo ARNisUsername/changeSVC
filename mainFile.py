@@ -16,17 +16,18 @@ range_on_training = (X_train - min_on_training).max(axis=0)
 X_train_scaled = (X_train - min_on_training) / range_on_training
 X_test_scaled = (X_test - min_on_training) / range_on_training
 
-#Get data points for matplotlib plot on changing C and gamma(can change between 'rbf' and 'poly' to measure differences)
+#Get data points for matplotlib plot on changing C and gamma(can change between 'rbf' and 'poly' in var theKernel to measure differences)
 trainScoreC = []
 testScoreC = []
+theKernel = 'rbf'
 for num in [0.1,1,10,100]:
-    svm = SVC(kernel='rbf',C=num,gamma=1).fit(X_train_scaled, y_train)
+    svm = SVC(kernel=theKernel,C=num,gamma=1).fit(X_train_scaled, y_train)
     trainScoreC.append(svm.score(X_train_scaled, y_train))
     testScoreC.append(svm.score(X_test_scaled, y_test))
 trainScoreG = []
 testScoreG = []
 for num in [0.1,1,10,100]:
-    svm = SVC(kernel='rbf',C=1,gamma=num).fit(X_train_scaled, y_train)
+    svm = SVC(kernel=theKernel,C=1,gamma=num).fit(X_train_scaled, y_train)
     trainScoreG.append(svm.score(X_train_scaled, y_train))
     testScoreG.append(svm.score(X_test_scaled, y_test))
 
